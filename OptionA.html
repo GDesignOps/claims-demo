@@ -419,7 +419,7 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            flex: 1;
+            flex: 1.5;
             min-width: 0;
         }
 
@@ -526,7 +526,7 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-left: auto;
+            justify-content: flex-end;
         }
 
         .claim-amount {
@@ -534,6 +534,12 @@
             font-weight: 500;
             line-height: 22.5px;
             white-space: nowrap;
+            text-align: right;
+            min-width: 120px;
+        }
+
+        .claim-amount:last-of-type {
+            min-width: 120px;
         }
 
         .claim-amount.pending {
@@ -2656,7 +2662,6 @@
                         <div class="header-account">Benefit Account</div>
                         <div class="header-amount">Claim Amount</div>
                         <div class="header-balance">Balance Owed</div>
-                        <div class="header-spacer"></div>
                     </div>
                     <div class="claim-item" onclick="openDetailPanel('approved')">
                         <div class="claim-vendor">
@@ -2714,7 +2719,6 @@
                         <div class="header-account">Benefit Account</div>
                         <div class="header-status">Status</div>
                         <div class="header-amount">Claim Amount</div>
-                        <div class="header-spacer"></div>
                     </div>
                     <div class="claim-item" onclick="openDetailPanel('info-requested')">
                         <div class="claim-vendor">
@@ -2774,7 +2778,6 @@
                         <div class="header-account">Benefit Account</div>
                         <div class="header-status">Status</div>
                         <div class="header-amount">Claim Amount</div>
-                        <div class="header-spacer"></div>
                     </div>
                     <div class="claim-item" onclick="openDetailPanel('denied')">
                         <div class="claim-vendor">
