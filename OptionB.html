@@ -419,7 +419,7 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            flex: 1;
+            flex: 1.5;
             min-width: 0;
         }
 
@@ -526,7 +526,7 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-left: auto;
+            justify-content: flex-end;
         }
 
         .claim-amount {
@@ -534,6 +534,12 @@
             font-weight: 500;
             line-height: 22.5px;
             white-space: nowrap;
+            text-align: right;
+            min-width: 120px;
+        }
+
+        .claim-amount:last-of-type {
+            min-width: 120px;
         }
 
         .claim-amount.pending {
@@ -551,6 +557,129 @@
         .chevron svg {
             width: 100%;
             height: 100%;
+        }
+
+        /* Claims Table Headers */
+        .claims-table-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 24px;
+            background: #F9F7F6;
+            border-bottom: 1px solid #E2E6EB;
+            gap: 24px;
+        }
+
+        .claims-table-header .header-vendor {
+            flex: 1.5;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: #60758F;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .claims-table-header .header-date {
+            flex: 1;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: #60758F;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .claims-table-header .header-account {
+            flex: 1;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: #60758F;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .claims-table-header .header-status {
+            flex: 1;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: #60758F;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .claims-table-header .header-amount {
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: #60758F;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: right;
+            min-width: 120px;
+        }
+
+        .claims-table-header .header-balance {
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: #60758F;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: right;
+            min-width: 120px;
+        }
+
+        .claims-table-header .header-spacer {
+            width: 40px;
+            flex-shrink: 0;
+        }
+
+        /* All Claims Tabs Even Spacing */
+        .claims-table-header .header-vendor,
+        .claims-table-header .header-date,
+        .claims-table-header .header-account,
+        .claims-table-header .header-status,
+        .claims-table-header .header-amount,
+        .claims-table-header .header-balance {
+            flex: 1;
+        }
+
+        .claim-item .claim-vendor {
+            flex: 1;
+        }
+
+        .claim-item .claim-date,
+        .claim-item .claim-account,
+        .claim-item .claim-status {
+            flex: 1;
+        }
+
+        /* Pending Payout Tab Specific - Hide Status Column */
+        [data-claims-tab="pending"] .claim-item .claim-status {
+            display: none;
+        }
+
+        /* Adjust amounts section for all tabs */
+        .claim-item .claim-amounts {
+            flex: 2;
+            gap: 24px;
+        }
+
+        .claim-item .claim-amount {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .claim-item .chevron {
+            margin-left: 0;
+        }
+
+        /* In Review and Completed tabs - adjust amounts for single amount */
+        [data-claims-tab="review"] .claim-item .claim-amounts,
+        [data-claims-tab="completed"] .claim-item .claim-amounts {
+            flex: 1;
         }
 
         /* Detail Modal/Panel */
@@ -2606,6 +2735,13 @@
 
                 <!-- Pending Payout Tab Content -->
                 <div class="claims-tab-content" data-claims-tab="pending">
+                    <div class="claims-table-header">
+                        <div class="header-vendor">Vendor</div>
+                        <div class="header-date">Date</div>
+                        <div class="header-account">Benefit Account</div>
+                        <div class="header-amount">Claim Amount</div>
+                        <div class="header-balance">Balance Owed</div>
+                    </div>
                     <div class="claim-item" onclick="openDetailPanel('approved')">
                         <div class="claim-vendor">
                             <div class="vendor-icon dollar">
@@ -2656,6 +2792,13 @@
 
                 <!-- In Review Tab Content -->
                 <div class="claims-tab-content active" data-claims-tab="review">
+                    <div class="claims-table-header">
+                        <div class="header-vendor">Vendor</div>
+                        <div class="header-date">Date</div>
+                        <div class="header-account">Benefit Account</div>
+                        <div class="header-status">Status</div>
+                        <div class="header-amount">Claim Amount</div>
+                    </div>
                     <div class="claim-item" onclick="openDetailPanel('info-requested')">
                         <div class="claim-vendor">
                             <div class="vendor-icon dollar">
@@ -2708,6 +2851,13 @@
 
                 <!-- Completed Tab Content -->
                 <div class="claims-tab-content" data-claims-tab="completed">
+                    <div class="claims-table-header">
+                        <div class="header-vendor">Vendor</div>
+                        <div class="header-date">Date</div>
+                        <div class="header-account">Benefit Account</div>
+                        <div class="header-status">Status</div>
+                        <div class="header-amount">Claim Amount</div>
+                    </div>
                     <div class="claim-item" onclick="openDetailPanel('denied')">
                         <div class="claim-vendor">
                             <div class="vendor-icon gift">
